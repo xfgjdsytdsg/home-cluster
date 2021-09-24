@@ -34,4 +34,11 @@ ansible-playbook -i inventory/home-cluster/hosts.yml playbooks/kubernetes/k3s-in
 yay -S --needed kubectl helm sops gnupg pinentry kustomize python-pre-commit prettier
 yay -S flux-bin
 go install github.com/go-task/task/v3/cmd/task@latest
+
+yay -S direnv
+eval "$(direnv hook zsh)"
+direnv allow
+chmod 400 ~/.kube/config 
+chmod 400 kubeconfig
+exec $SHELL  
 ```
