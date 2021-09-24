@@ -8,12 +8,13 @@ sudo apt install zfsutils-linux
 
 ls -l /dev/disk/by-id/
 
-sudo zpool create tank -o ashift=12 raidz2 \
+sudo zpool create tank -o ashift=12 raidz \
 ata-WDC_WD10EFRX-68FYTN0_WD-WCC4J0SEF254 \
 ata-WDC_WD10EFRX-68FYTN0_WD-WCC4J0SEFN9A \
 ata-WDC_WD10EFRX-68FYTN0_WD-WCC4J0TDU34X \
-ata-WDC_WD10EFRX-68FYTN0_WD-WCC4J0TDUPT3 \
 ata-WDC_WD10EFRX-68FYTN0_WD-WCC4J7VF4NUS
+
+ata-WDC_WD10EFRX-68FYTN0_WD-WCC4J0TDUPT3
 
 sudo zfs set compression=lz4 tank
 sudo zfs set xattr=sa tank
@@ -51,4 +52,16 @@ direnv allow
 chmod 400 ~/.kube/config 
 chmod 400 kubeconfig
 exec $SHELL  
+```
+
+```bash
+gpg --export-secret-keys --armor "${FLUX_KEY_FP}" |
+kubectl --kubeconfig=./kubeconfig create secret generic sops-gpg \
+    --namespace=rook-ceph \
+    --from-file=sops.asc=/dev/stdin
+
+gpg --export-secret-keys --armor "${FLUX_KEY_FP}" |
+kubectl --kubeconfig=./kubeconfig create secret generic sops-gpg \
+    --namespace=networking \
+    --from-file=sops.asc=/dev/stdin
 ```
