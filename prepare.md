@@ -31,6 +31,7 @@ ansible-playbook -i inventory/home-cluster/hosts.yml playbooks/kubernetes/k3s-in
 [template-cluster-k3s](https://github.com/k8s-at-home/template-cluster-k3s)
 
 ```bash
-yay -S --needed kubectl helm fluxctl sops gnupg pinentry kustomize python-pre-commit prettier
+yay -S --needed kubectl helm sops gnupg pinentry kustomize python-pre-commit prettier
+yay -S flux-bin
 go install github.com/go-task/task/v3/cmd/task@latest
 ```
