@@ -1,0 +1,10 @@
+---
+# Timezone for the servers
+timezone: "Asia/Shanghai"
+
+# Additional ssh public keys to add to the nodes
+ssh_authorized_keys:
+  # MacBook
+  - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDxnDgXdIdeIxP6/i1a7xNIKAMRf1kyLi7NLPU9PTDgT bernylinville@devopsthink.org"
+  # X470
+  - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJyNEZLJoPXqrxnAbZjR3a2kPOFhsAMmz5GQvM29vFiG zhAMdVzUcw9476@protonmail.com"

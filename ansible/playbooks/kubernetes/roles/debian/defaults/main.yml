@@ -1,0 +1,27 @@
+---
+apt_install_packages:
+  - apt-transport-https
+  - arptables
+  - ca-certificates
+  - curl
+  - ebtables
+  - gdisk
+  - hdparm
+  - htop
+  - iputils-ping
+  - ipvsadm
+  - net-tools
+  - nfs-common
+  - vim
+  - ntpdate
+  - open-iscsi
+  - psmisc
+  - smartmontools
+  - socat
+  - software-properties-common
+  - unattended-upgrades
+  - unzip
+
+apt_remove_packages:
+  - apparmor
+  - snapd
