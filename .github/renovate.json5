@@ -15,17 +15,16 @@
     "fileMatch": ["charts/.+/Chart\\.yaml$"]
   },
   "helm-values": {
-    "fileMatch": [
-      "cluster/.+/helm-release\\.yaml$"
-    ]
+    "fileMatch": ["cluster/.+/helm-release\\.yaml$"]
   },
   "kubernetes": {
     "fileMatch": [
-      "cluster/.+\\.yaml$"
+      "cluster/.+\\.yaml$",
+      "server/.+\\.yaml$"
     ],
     "ignorePaths": [
       "cluster/base/"
-    ],
+    ]
   },
   "regexManagers": [
     // regexManager to read and process HelmRelease files
@@ -67,6 +66,16 @@
       ],
       "matchStrings": [
         "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: v(?<currentValue>.*)\n"
+      ],
+      "datasourceTemplate": "helm"
+    },
+    // regexManager to read and process Rook-Ceph CRD's
+    {
+      "fileMatch": [
+        "cluster/crds/rook-ceph/.+\\.yaml$"
+      ],
+      "matchStrings": [
+        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: (?<currentValue>.*)\n"
       ],
       "datasourceTemplate": "helm"
     },
