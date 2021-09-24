@@ -1,10 +1,19 @@
 {
   "enabled": true,
+  "timezone": "Asia/Shanghai",
   "semanticCommits": "enabled",
   "dependencyDashboard": true,
-  "dependencyDashboardTitle": "Renovate Dashboard",
+  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "commitBody": "Signed-off-by: xfgjdsytdsg <xfgjdsytdsg@users.noreply.github.com>",
   "suppressNotifications": ["prIgnoreNotification"],
   "rebaseWhen": "conflicted",
+  "commitMessageTopic": "{{depName}}",
+  "commitMessageExtra": "to {{newVersion}}",
+  "commitMessageSuffix": "",
+  // set up Renovate Managers
+  "helmv3": {
+    "fileMatch": ["charts/.+/Chart\\.yaml$"]
+  },
   "helm-values": {
     "fileMatch": [
       "cluster/.+/helm-release\\.yaml$"
@@ -55,6 +64,7 @@
     // setup datasources
     {
       "matchDatasources": ["helm"],
+      "semanticCommitScope": "charts",
       "separateMinorPatch": true,
       "ignoreDeprecated": true
     },
@@ -70,31 +80,37 @@
     {
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["major"],
+      "commitMessagePrefix": "feat(images)!: ",
       "labels": ["renovate/image", "dep/major"]
     },
     {
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["minor"],
+      "semanticCommitType": "feat",
       "labels": ["renovate/image", "dep/minor"]
     },
     {
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["patch"],
+      "semanticCommitType": "fix",
       "labels": ["renovate/image", "dep/patch"]
     },
     {
       "matchDatasources": ["helm"],
       "matchUpdateTypes": ["major"],
+      "commitMessagePrefix": "feat(charts)!: ",
       "labels": ["renovate/helm", "dep/major"]
     },
     {
       "matchDatasources": ["helm"],
       "matchUpdateTypes": ["minor"],
+      "semanticCommitType": "feat",
       "labels": ["renovate/helm", "dep/minor"]
     },
     {
       "matchDatasources": ["helm"],
       "matchUpdateTypes": ["patch"],
+      "semanticCommitType": "fix",
       "labels": ["renovate/helm", "dep/patch"]
     }
   ]
