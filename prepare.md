@@ -26,6 +26,7 @@ sudo zfs set xattr=sa dnodesize=auto tank/PersistentVolumeClaims
 sudo apt install nfs-kernel-server
 sudo zfs set sharenfs="rw=192.168.0.0/24,ro=10.0.0.0/8" tank/PersistentVolumeClaims
 sudo zfs share tank/PersistentVolumeClaims
+sudo zfs set sharenfs=on tank/PersistentVolumeClaims
 sudo showmount -e 127.0.0.1
 
 ```
