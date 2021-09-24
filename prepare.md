@@ -20,12 +20,12 @@ sudo zfs set xattr=sa tank
 sudo zfs set atime=off tank
 sudo zpool set autoexpand=on tank
 
-sudo mkdir -p /data
-sudo zfs create -o mountpoint=/data tank/data
-sudo zfs set xattr=sa dnodesize=auto tank/data
+sudo zfs create tank/PersistentVolumeClaims
+sudo zfs set xattr=sa dnodesize=auto tank/PersistentVolumeClaims
+
 sudo apt install nfs-kernel-server
-sudo zfs set sharenfs="rw=192.168.0.0/24,ro=10.0.0.0/8" tank/data
-sudo zfs share tank/data
+sudo zfs set sharenfs="rw=192.168.0.0/24,ro=10.0.0.0/8" tank/PersistentVolumeClaims
+sudo zfs share tank/PersistentVolumeClaims
 sudo showmount -e 127.0.0.1
 
 ```
