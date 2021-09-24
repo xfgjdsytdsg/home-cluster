@@ -3,7 +3,24 @@
 # Trash
 .DS_Store
 Thumbs.db
-# k8s
+# Binaries
+bin
+/flux
+*.iso
+# Temp folders
+.temp*
+.private/
+.logs/
+.task/
+# Ansible
+xanmanning.k3s*
+# Sops
+.decrypted~*
+# Kubernetes
 kubeconfig
+# NAS
+server/secrets.json
+# Other
+report.html
 # vscode-sops
 .decrypted~*.yaml
